@@ -13,7 +13,7 @@ public class GestionnaireDeFiches : IGestionnaireDeFiches
         _fichesParIdentifiants = new Dictionary<Guid, Fiche>();
     }
 
-    public Guid AjouteFiche(Fiche paramFiche)
+    public Guid AjouterFiche(Fiche paramFiche)
     {
         if (_fichesParIdentifiants.TryAdd(paramFiche.FicheGuid, paramFiche))
         {
@@ -23,7 +23,7 @@ public class GestionnaireDeFiches : IGestionnaireDeFiches
         return Guid.Empty;
     }
 
-    public Fiche? GetFiche(Guid paramGuid)
+    public Fiche? ChercherFicheParGuid(Guid paramGuid)
     {
         if (_fichesParIdentifiants.ContainsKey(paramGuid))
         {
@@ -38,7 +38,7 @@ public class GestionnaireDeFiches : IGestionnaireDeFiches
     /// </summary>
     /// <param name="paramGuid">l'identifiant de la fiche à supprimer</param>
     /// <returns>Renvoie true si la fiche a été supprimée</returns>
-    public bool SupprimeFiche(Guid paramGuid)
+    public bool SupprimerFiche(Guid paramGuid)
     {
         return _fichesParIdentifiants.Remove(paramGuid);
     }
@@ -48,7 +48,7 @@ public class GestionnaireDeFiches : IGestionnaireDeFiches
     /// </summary>
     /// <param name="paramEtiquettes"></param>
     /// <returns></returns>
-    public List<Fiche> RechercheFichesParEtiquettes(params Etiquette[] paramEtiquettes)
+    public List<Fiche> ChercherFichesParEtiquettes(params Etiquette[] paramEtiquettes)
     {
         var fichesTrouvees = new List<Fiche>();
 
